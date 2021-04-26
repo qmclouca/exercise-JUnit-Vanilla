@@ -22,4 +22,20 @@ public class FinancingTests {
 		//Assert
 		Assertions.assertTrue(result == expectedValue);
 	}
+	//Second Test
+	@Test
+	public void paymentAmountsShouldBeLessThanHalfOfTheCustomersRevenue() {
+		//Arrange
+		long id = 1L;
+		boolean expectedValue = true;
+		double totalAmount = 1000.00;
+		double income = 200.00;
+		int months = 10;
+		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months);
+		//Act
+		boolean result = fin.checkIfClientRevenueIsSufficient(totalAmount, income, months);
+		//Assert
+		Assertions.assertTrue(result == expectedValue);
+	}
+	
 }

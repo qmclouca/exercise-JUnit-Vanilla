@@ -59,4 +59,11 @@ public class Financing {
 		}
 		return sufficientIncomeTest;
 	}
+	public boolean checkIfClientRevenueIsSufficient(Double totalAmount, Double income, Integer months) {
+		boolean sufficientRevenueTest = false;
+		if ((totalAmount/months) <= (income/2)) {
+			sufficientRevenueTest = true;			
+		}
+		return sufficientRevenueTest;
+	}
 }
