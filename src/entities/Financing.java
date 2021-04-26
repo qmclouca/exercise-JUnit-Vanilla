@@ -61,9 +61,9 @@ public class Financing {
 	}
 	public boolean checkIfClientRevenueIsSufficient(Double totalAmount, Double income, Integer months) {
 		boolean sufficientRevenueTest = false;
-		if ((totalAmount/months) <= (income/2)) {
+		if (((totalAmount*0.8)/months) <= (income/2)) {
 			sufficientRevenueTest = true;			
-		}
+		} else throw new IllegalArgumentException();
 		return sufficientRevenueTest;
 	}
 }

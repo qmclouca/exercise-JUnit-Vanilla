@@ -30,12 +30,14 @@ public class FinancingTests {
 		boolean expectedValue = true;
 		double totalAmount = 1000.00;
 		double income = 200.00;
-		int months = 10;
+		int months = 7;
 		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months);
 		//Act
 		boolean result = fin.checkIfClientRevenueIsSufficient(totalAmount, income, months);
 		//Assert
 		Assertions.assertTrue(result == expectedValue);
 	}
+	//Third Test
+	
 	
 }
