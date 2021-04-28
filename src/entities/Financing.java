@@ -7,21 +7,36 @@ public class Financing {
 	private Double totalAmount;
 	private Double income;
 	private Integer months;	
+	private Double paymentsAmounts;
 	
 	public Financing() {
 		
 	}
 
-	public Financing(Long id, Double totalAmount, Double income, Integer months) {
+	public Financing(Long id, Double totalAmount, Double income, Integer months, Double paymentsAmounts) {
 		super();
 		this.id = id;
 		this.totalAmount = totalAmount;
 		this.income = income;
 		this.months = months;
+		this.paymentsAmounts = paymentsAmounts;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public Financing(Double paymentsAmounts) {
+		super();
+		this.paymentsAmounts = paymentsAmounts;
+	}
+
+	public Double getPaymentsAmounts() {
+		return paymentsAmounts;
+	}
+
+	public void setPaymentsAmounts(Double paymentsAmounts) {
+		this.paymentsAmounts = paymentsAmounts;
 	}
 
 	public void setId(Long id) {
@@ -66,4 +81,12 @@ public class Financing {
 		} else throw new IllegalArgumentException();
 		return sufficientRevenueTest;
 	}
+	public boolean checkInstallments(Long id, Double totalAmount, Double income, Integer months, Double paymentsAmounts) {
+		boolean installmentsOkTest = false;
+		if (((totalAmount*0.8)/months) <= paymentsAmounts){
+			installmentsOkTest = true;
+		}
+		return installmentsOkTest;
+	}
+	
 }

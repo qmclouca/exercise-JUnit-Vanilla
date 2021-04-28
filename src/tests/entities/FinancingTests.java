@@ -16,7 +16,8 @@ public class FinancingTests {
 		double totalAmount = 1000.00;
 		double income = 200.00;
 		int months = 20;
-		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months);
+		double paymentsAmounts = 10;
+		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months, paymentsAmounts);
 		//Act
 		boolean result = fin.sufficientIncome(income);
 		//Assert
@@ -30,14 +31,28 @@ public class FinancingTests {
 		boolean expectedValue = true;
 		double totalAmount = 1000.00;
 		double income = 200.00;
-		int months = 7;
-		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months);
+		int months = 8;
+		double paymentsAmounts = 10;
+		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months, paymentsAmounts);
 		//Act
 		boolean result = fin.checkIfClientRevenueIsSufficient(totalAmount, income, months);
 		//Assert
 		Assertions.assertTrue(result == expectedValue);
 	}
 	//Third Test
-	
-	
+	@Test
+	public void paymentAmountsShouldBeLessThanEightyPercentOfTheTotalAmountDividedByTheNumberOfInstallments() {
+		//Arrange
+		long id = 1L;
+		boolean expectedValue = true;
+		double totalAmount = 1000.00;
+		double income = 200.00;
+		int months = 10;
+		double paymentsAmounts = 80;
+		Financing fin = FinancingFactory.createFinancing(id, totalAmount, income, months, paymentsAmounts);
+		//Act
+		boolean result = fin.checkInstallments(id, totalAmount, income, months, paymentsAmounts);
+		//Assert
+		Assertions.assertTrue(result == expectedValue);		
+	}
 }
